@@ -16,7 +16,6 @@ class DescriptiveSection extends StatelessWidget {
             "Hello, I'm Dev Sonar",
           style: Theme.of(context).textTheme.displayMedium?.copyWith(
             fontWeight: FontWeight.bold,
-            color: Colors.white,
           ),
           textAlign: textAlign,
         ),
@@ -36,7 +35,7 @@ class DescriptiveSection extends StatelessWidget {
               "using Flutter, Python, and FastAPI.",
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             height: 1.6,
-            color: Colors.grey[300],
+            color: Colors.grey[800],
           ),
           textAlign: textAlign,
         ),
