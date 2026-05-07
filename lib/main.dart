@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/features/about/about_page.dart';
 import 'package:my_portfolio/features/home/home_page.dart';
 
+import 'features/project_and_skills/project_and_skills_page.dart';
+
 void main(){
   runApp(const MyPortfolioApp());
 }
@@ -35,7 +37,7 @@ class _PortfolioScreenState extends State<PortfolioScreen>{
   final List<Widget> _pages = [
     const Center(child: HomePage()),
     const Center(child: AboutPage()),
-    const Center(child: Text("Skill and Project")),
+    const Center(child: ProjectsSkillsPage()),
     const Center(child: Text("Contact")),
   ];
 
