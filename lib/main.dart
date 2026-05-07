@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio/features/about/about_page.dart';
 import 'package:my_portfolio/features/home/home_page.dart';
 
+import 'features/contact/contact_page.dart';
 import 'features/project_and_skills/project_and_skills_page.dart';
 
 void main(){
@@ -38,7 +39,7 @@ class _PortfolioScreenState extends State<PortfolioScreen>{
     const Center(child: HomePage()),
     const Center(child: AboutPage()),
     const Center(child: ProjectsSkillsPage()),
-    const Center(child: Text("Contact")),
+    const Center(child: ContactPage()),
   ];
 
   void _onItemTapped(int index){
