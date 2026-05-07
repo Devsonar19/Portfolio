@@ -31,7 +31,7 @@ class LocationBox extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Current Location",
+                "Location",
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
                   color: Colors.white60,
                   letterSpacing: 1.2,

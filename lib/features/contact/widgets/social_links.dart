@@ -15,32 +15,36 @@ class SocialLinks extends StatelessWidget {
           context,
           icon: Icons.email,
           label: "Email Me",
+          title: "devsonar19@outlook.com",
           url: "mailto:devsonar19@outlook.com",
         ),
         _buildSocialButton(
           context,
           icon: Icons.person,
           label: "LinkedIn",
+          title: "dev-sonar-656677281",
           url: "https://www.linkedin.com/in/dev-sonar-656677281/",
         ),
         _buildSocialButton(
           context,
-          icon: Icons.code,
+          icon: Icons.developer_mode,
           label: "GitHub",
+          title: "Devsonar19",
           url: "https://github.com/Devsonar19",
         ),
         _buildSocialButton(
           context,
           icon: Icons.code_outlined,
           label: "LeetCode",
+          title: "Dev_Sonar19",
           url: "https://leetcode.com/u/Dev_Sonar19/",
         ),
       ],
     );
   }
 
-  Widget _buildSocialButton(BuildContext context, {required IconData icon, required String label, required String url}) {
-    return _HoverSocialButton(icon: icon, label: label, url: url);
+  Widget _buildSocialButton(BuildContext context, {required IconData icon, required String label, required String url, required String title}) {
+    return _HoverSocialButton(icon: icon, label: label, url: url, title: title,);
   }
 }
 
@@ -48,8 +52,9 @@ class _HoverSocialButton extends StatefulWidget {
   final IconData icon;
   final String label;
   final String url;
+  final String title;
 
-  const _HoverSocialButton({required this.icon, required this.label, required this.url});
+  const _HoverSocialButton({required this.icon, required this.label, required this.url, required this.title});
 
   @override
   State<_HoverSocialButton> createState() => _HoverSocialButtonState();
@@ -74,7 +79,7 @@ class _HoverSocialButtonState extends State<_HoverSocialButton> {
         onTap: _launchURL,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
-          width: 160,
+          width: 220,
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
           decoration: BoxDecoration(
             color: isHovered
@@ -97,6 +102,14 @@ class _HoverSocialButtonState extends State<_HoverSocialButton> {
               const SizedBox(height: 12),
               Text(
                 widget.label,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: isHovered ? Colors.white : Colors.grey[700],
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                widget.title,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: isHovered ? Colors.white : Colors.grey[700],
