@@ -131,7 +131,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   Widget _buildResumeButton() {
     return ElevatedButton(
       onPressed: () {
-        final pdfUrl = Uri.parse('assets/pdfs/resume.pdf');
+        final pdfUrl = Uri.parse('https://drive.google.com/drive/folders/1s2IVWDwtwE3-gpZI2NR_avHMdv1uNA3Y');
         launchUrl(pdfUrl);
       },
       style: ElevatedButton.styleFrom(
