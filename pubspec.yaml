@@ -63,6 +63,7 @@ flutter:
     - assets/images/leetcode_dashboard.png
     - assets/images/mynotes_dashboard.png
     - assets/images/fastapi_dashboard.jpeg
+    - assets/pdfs/resume.pdf
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
