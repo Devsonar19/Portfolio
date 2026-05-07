@@ -19,7 +19,7 @@ class BeyondWork extends StatelessWidget {
                 Icon(Icons.coffee, color: Theme.of(context).colorScheme.primary),
                 const SizedBox(width: 12),
                 Text(
-                  "Beyond The Screen",
+                  "Beyond Work",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
@@ -31,7 +31,7 @@ class BeyondWork extends StatelessWidget {
               "When I am not writing code or setting up Linux environments, I prioritize a healthy lifestyle. Physical fitness and overall health are essential to keeping my mind sharp and fueling my growth mindset. I am also an avid reader and have a deep appreciation for mind-bending films that challenge conventional storytelling. Beyond technology and media, I care deeply about the environment and animal welfare. Ultimately, my focus is on helping others and building meaningful solutions that leave a positive impact on future generations.",
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 height: 1.6,
-                color: Colors.grey[800],
+                color: Colors.white60,
               ),
             ),
           ],

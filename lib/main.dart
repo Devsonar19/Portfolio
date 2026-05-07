@@ -19,8 +19,8 @@ class MyPortfolioApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Arial',
-        brightness: Brightness.dark, // Enforcing dark theme for the transparent look
-        scaffoldBackgroundColor: const Color(0xFF121212), // Deep sleek background
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: const Color(0xFF121212),
       ),
       home: const PortfolioScreen(),
     );
@@ -76,7 +76,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
             elevation: 0,
             titleSpacing: 24,
             title: Text(
-              "Dev Sonar",
+              "Portfolio",
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22, letterSpacing: 1.2),
             ),
 
@@ -153,10 +153,38 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
           const SizedBox(height: 40),
           const Text("Menu", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
           const SizedBox(height: 24),
-          ListTile(title: const Text("Home"), onTap: () => _onItemTapped(0), selected: _currIndex == 0),
-          ListTile(title: const Text("About"), onTap: () => _onItemTapped(1), selected: _currIndex == 1),
-          ListTile(title: const Text("Skills & Projects"), onTap: () => _onItemTapped(2), selected: _currIndex == 2),
-          ListTile(title: const Text("Contact"), onTap: () => _onItemTapped(3), selected: _currIndex == 3),
+          ListTile(
+              title: const Text("Home"),
+              onTap: () {
+                Navigator.pop(context);
+                _onItemTapped(0);
+              },
+              selected: _currIndex == 0
+          ),
+          ListTile(
+              title: const Text("About"),
+              onTap: () {
+                Navigator.pop(context);
+                _onItemTapped(1);
+              },
+              selected: _currIndex == 1
+          ),
+          ListTile(
+              title: const Text("Skills & Projects"),
+              onTap: (){
+                Navigator.pop(context);
+                _onItemTapped(2);
+              },
+              selected: _currIndex == 2
+          ),
+          ListTile(
+              title: const Text("Contact"),
+              onTap: () {
+                Navigator.pop(context);
+                _onItemTapped(3);
+              },
+              selected: _currIndex == 3
+          ),
           const SizedBox(height: 24),
           _buildResumeButton(),
         ],

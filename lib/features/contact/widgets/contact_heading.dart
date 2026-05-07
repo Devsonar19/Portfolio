@@ -12,7 +12,7 @@ class ContactHeading extends StatelessWidget {
           "Let's Connect",
           style: Theme.of(context).textTheme.displaySmall?.copyWith(
             fontWeight: FontWeight.bold,
-            color: Colors.black,
+            color: Colors.white,
           ),
           textAlign: TextAlign.center,
         ),
@@ -22,7 +22,7 @@ class ContactHeading extends StatelessWidget {
               "AI systems, or mind-bending films, my inbox is always open. I'll try my best to get back to you!",
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             height: 1.6,
-            color: Colors.grey[600],
+            color: Colors.white70,
           ),
           textAlign: TextAlign.center,
         ),

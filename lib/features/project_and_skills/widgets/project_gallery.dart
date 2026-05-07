@@ -37,7 +37,7 @@ class ProjectGallery extends StatelessWidget {
           "Selected Works",
           style: Theme.of(context).textTheme.headlineMedium?.copyWith(
             fontWeight: FontWeight.bold,
-            color: Colors.blueAccent,
+            color: Colors.white,
           ),
         ),
         const SizedBox(height: 32),

@@ -15,7 +15,6 @@ class SocialLinks extends StatelessWidget {
           context,
           icon: Icons.email,
           label: "Email Me",
-          // The 'mailto:' scheme opens the user's default email client
           url: "mailto:devsonar19@outlook.com",
         ),
         _buildSocialButton(
@@ -45,7 +44,6 @@ class SocialLinks extends StatelessWidget {
   }
 }
 
-// A private stateful widget just to handle the hover animations
 class _HoverSocialButton extends StatefulWidget {
   final IconData icon;
   final String label;
@@ -94,14 +92,14 @@ class _HoverSocialButtonState extends State<_HoverSocialButton> {
               Icon(
                 widget.icon,
                 size: 32,
-                color: isHovered ? Colors.black : Colors.grey[500],
+                color: isHovered ? Colors.white : Colors.grey[700],
               ),
               const SizedBox(height: 12),
               Text(
                 widget.label,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: isHovered ? Colors.black : Colors.grey[500],
+                  color: isHovered ? Colors.white : Colors.grey[700],
                 ),
               ),
             ],

@@ -60,6 +60,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/my_photo.jpeg
+    - assets/images/my_photo2.jpeg
     - assets/images/leetcode_dashboard.png
     - assets/images/mynotes_dashboard.png
     - assets/images/fastapi_dashboard.jpeg

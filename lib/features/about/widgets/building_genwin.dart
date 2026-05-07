@@ -22,7 +22,7 @@ class BuildingGenwin extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Building GenWin",
+                "Building a Community",
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -32,14 +32,14 @@ class BuildingGenwin extends StatelessWidget {
                 "Building a community and people for the next Generation. Focusing on 4 fundamental pillars for young people, MINDSET, FINANCE, RELATIONSHIPS & TASTE. Building confidence, positive attitude and a sense of responsibility that'll fuel the growth of the community and the young generation. Let's grow together, for Betterment.",
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   height: 1.7,
-                  color: Colors.grey[700],
+                  color: Colors.white60,
                 ),
               ),
               const SizedBox(height: 16),
               Text(
                 "This Generation Will Win. Coming Soon!",
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
                 ),
               )
             ]

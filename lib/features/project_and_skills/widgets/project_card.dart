@@ -110,7 +110,7 @@ class _ProjectCardState extends State<ProjectCard> {
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: Colors.white,
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -121,8 +121,8 @@ class _ProjectCardState extends State<ProjectCard> {
                           maxLines: 4,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Colors.grey[700],
-                            height: 1.3,
+                            color: Colors.white54,
+                            height: 1.5,
                           ),
                         ),
                       ),

@@ -22,7 +22,7 @@ class HeadlineBox extends StatelessWidget {
               "I believe that the best way to understand complex concepts is to build them from the ground up.",
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             height: 1.7,
-            color: Colors.grey[700],
+            color: Colors.white70,
           ),
           textAlign: isMobile ? TextAlign.center : TextAlign.left,
         ),

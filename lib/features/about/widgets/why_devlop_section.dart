@@ -34,7 +34,7 @@ class WhyDevlopSection extends StatelessWidget {
                 "Working with Flutter gives me the creative satisfaction of building smooth, beautiful user interfaces where I can see my code come to life instantly. But I’m equally drawn to backend development because that’s where the real engine lives—designing the architecture, managing databases, and making sure everything runs securely.",
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   height: 1.6,
-                  color: Colors.grey[800],
+                  color: Colors.white60,
                 ),
               ),
             ]

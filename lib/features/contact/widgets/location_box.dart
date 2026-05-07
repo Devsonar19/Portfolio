@@ -33,7 +33,7 @@ class LocationBox extends StatelessWidget {
               Text(
                 "Current Location",
                 style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                  color: Colors.grey[600],
+                  color: Colors.white60,
                   letterSpacing: 1.2,
                 ),
               ),
@@ -42,14 +42,14 @@ class LocationBox extends StatelessWidget {
                 "Vadodara, Gujarat, India",
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
               const SizedBox(height: 2),
               Text(
                 "IST (Indian Standard Time)",
                 style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: Colors.grey[600],
+                  color: Colors.white60,
                 ),
               ),
             ],

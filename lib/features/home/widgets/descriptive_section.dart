@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/features/contact/contact_page.dart';
 
 class DescriptiveSection extends StatelessWidget {
   final bool isMobile;
@@ -23,7 +24,7 @@ class DescriptiveSection extends StatelessWidget {
         Text(
           "Computer Science Student | Building Scalable Systems",
           style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-            color: Theme.of(context).colorScheme.primary,
+            color: Colors.white70,
             fontWeight: FontWeight.w600,
           ),
           textAlign: textAlign,
@@ -35,22 +36,9 @@ class DescriptiveSection extends StatelessWidget {
               "using Flutter, Python, and FastAPI.",
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
             height: 1.6,
-            color: Colors.grey[800],
+            color: Colors.white60,
           ),
           textAlign: textAlign,
-        ),
-        const SizedBox(height: 32),
-
-        ElevatedButton.icon(
-            onPressed: (){
-
-            },
-            icon: const Icon(Icons.rocket_launch),
-            label: const Text("Let's Build"),
-          style: ElevatedButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          ),
         ),
       ],
     );
