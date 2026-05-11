@@ -68040,7 +68040,7 @@ A.a9c.prototype={
 $0(){return this.a.jD(3)},
 $S:0}
 A.a9h.prototype={
-$0(){A.Pg(A.h0("assets/pdfs/resume.pdf",0,null),B.le)},
+$0(){A.Pg(A.h0("https://drive.google.com/drive/folders/1s2IVWDwtwE3-gpZI2NR_avHMdv1uNA3Y",0,null),B.le)},
 $S:0}
 A.a9d.prototype={
 $0(){var s=this.a,r=s.c
