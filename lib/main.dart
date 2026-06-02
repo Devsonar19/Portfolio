@@ -19,9 +19,7 @@ class MyPortfolioApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.light,
-        // A retro beige/off-white background
         scaffoldBackgroundColor: const Color(0xFFF4F0EA),
-        // Monospace font for the retro-futurism coding aesthetic
         fontFamily: 'Courier',
         colorScheme: const ColorScheme.light(
           primary: Color(0xFFFF5252), // Vibrant Red/Pink

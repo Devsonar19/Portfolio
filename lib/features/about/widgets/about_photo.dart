@@ -8,34 +8,31 @@ class AboutPhoto extends StatelessWidget {
     return Container(
       width: 300,
       height: 300,
-
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
+        color: Theme.of(context).colorScheme.secondary, // Neon Green backdrop
+        border: Border.all(color: Colors.black, width: 4),
+        boxShadow: const [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 5,
-            blurRadius: 7,
+            color: Colors.black,
+            offset: Offset(8, 8), // Brutalist solid shadow
+            blurRadius: 0,
+            spreadRadius: 0,
           )
-        ]
+        ],
       ),
-
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Image.asset(
-          'assets/images/my_photo2.jpeg',
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) {
-            return Container(
-              color: Theme.of(context).colorScheme.surfaceContainerHighest,
-              child: const Icon(
-                Icons.person,
-                size: 100,
-                color: Colors.grey,
-              ),
-            );
-          },
-        )
+      child: Image.asset(
+        'assets/images/my_photo2.jpeg',
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) {
+          return Container(
+            color: Colors.white,
+            child: const Icon(
+              Icons.person,
+              size: 100,
+              color: Colors.black,
+            ),
+          );
+        },
       ),
     );
   }
