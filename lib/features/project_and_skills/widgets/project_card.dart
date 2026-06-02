@@ -8,7 +8,6 @@ class ProjectCard extends StatefulWidget {
   final String imagePath;
   final String link;
 
-
   const ProjectCard({
     super.key,
     required this.title,
@@ -28,60 +27,56 @@ class _ProjectCardState extends State<ProjectCard> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
+      cursor: SystemMouseCursors.click,
       onEnter: (_) => setState(() => isHovered = true),
       onExit: (_) => setState(() => isHovered = false),
       child: GestureDetector(
         onTap: () async {
           final url = Uri.parse(widget.link);
-          if(await canLaunchUrl(url)){
+          if (await canLaunchUrl(url)) {
             launchUrl(url);
           }
-          else{
-            throw "Could not launch";
-          }
         },
+        // The animation moves the box up and left while the shadow stays planted
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 150),
+          transform: Matrix4.translationValues(
+              isHovered ? -4.0 : 0.0,
+              isHovered ? -4.0 : 0.0,
+              0.0
+          ),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainer,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: isHovered
-                  ? Theme.of(context).colorScheme.primary
-                  : Colors.grey.withOpacity(0.2),
-              width: 1,
-            ),
-            boxShadow: isHovered
-                ? [BoxShadow(color: Colors.black26, blurRadius: 10, offset: const Offset(0, 4))]
-                : [],
+            color: Colors.white,
+            border: Border.all(color: Colors.black, width: 3),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                // Shadow grows when hovered to simulate lifting off the page
+                offset: isHovered ? const Offset(12, 12) : const Offset(6, 6),
+                blurRadius: 0,
+              )
+            ],
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              // Image Section
               Expanded(
                 flex: 4,
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(15)),
-                  child: Container(
-                    width: double.infinity,
-                    color: Theme.of(context).colorScheme.surfaceContainerHighest,
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        Image.asset(
-                          widget.imagePath,
-                          fit: BoxFit.cover,
-                          errorBuilder: (context, error, stackTrace) => const Icon(Icons.image, size: 50, color: Colors.grey),
-                        ),
-                        AnimatedContainer(
-                          duration: const Duration(milliseconds: 200),
-                          color: Colors.black.withOpacity(isHovered ? 0.1 : 0.4),
-                        )
-                      ],
+                child: Container(
+                  decoration: const BoxDecoration(
+                    border: Border(bottom: BorderSide(color: Colors.black, width: 3)),
+                  ),
+                  child: Image.asset(
+                    widget.imagePath,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => const Center(
+                      child: Icon(Icons.broken_image, size: 50, color: Colors.black),
                     ),
                   ),
                 ),
               ),
+              // Content Section
               Expanded(
                 flex: 5,
                 child: Padding(
@@ -92,28 +87,31 @@ class _ProjectCardState extends State<ProjectCard> {
                       // Tags
                       Wrap(
                         spacing: 8,
-                        runSpacing: 4,
-                        children: widget.tags.map((tag) => Text(
-                          tag,
-                          style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontWeight: FontWeight.w600,
-                            letterSpacing: 0.5,
+                        runSpacing: 8,
+                        children: widget.tags.map((tag) => Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          color: Colors.black,
+                          child: Text(
+                            tag,
+                            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
                         )).toList(),
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: 16),
                       // Title
                       Text(
-                        widget.title,
+                        widget.title.toUpperCase(),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.black,
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 12),
                       // Description
                       Expanded(
                         child: Text(
@@ -121,7 +119,8 @@ class _ProjectCardState extends State<ProjectCard> {
                           maxLines: 4,
                           overflow: TextOverflow.ellipsis,
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: Colors.white54,
+                            color: Colors.black87,
+                            fontWeight: FontWeight.w600,
                             height: 1.5,
                           ),
                         ),

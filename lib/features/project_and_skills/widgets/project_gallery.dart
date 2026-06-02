@@ -6,25 +6,27 @@ class ProjectGallery extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // 💡 TO ADD A NEW PROJECT LATER:
+    // Just add another dictionary object to this list!
     final projects = [
       {
-        'title': 'LeetCode Stats Dashboard',
+        'title': 'LeetCode Stats',
         'description': 'A cross-platform application to track and visualize competitive programming metrics using interactive heatmaps and Native Android HomeScreen Widget.',
-        'tags': ['Flutter', 'FastAPI', 'GraphQL', 'BLoC', 'Kotlin'],
+        'tags': ['Flutter', 'FastAPI', 'GraphQL', 'BLoC'],
         'image': 'assets/images/leetcode_dashboard.png',
         'link' : 'https://github.com/Devsonar19/LeetCode-Stats'
       },
       {
         'title': 'My Notes',
-        'description': 'Developed a note-taking application using Flutter with a clean UI, and implemented full local CRUD operations using SQLite, later migrated to Firebase Firestore for real-time cloud sync.',
-        'tags': ['Flutter', 'Firebase Firestore', 'BLoC', 'PostgreSQL', 'Firebase Authentication'],
+        'description': 'Developed a note-taking application using Flutter with a clean UI, and implemented full local CRUD operations using SQLite, later migrated to Firebase Firestore.',
+        'tags': ['Flutter', 'Firestore', 'BLoC', 'PostgreSQL'],
         'image': 'assets/images/mynotes_dashboard.png',
         'link' : 'https://github.com/Devsonar19/My-Notes'
       },
       {
-        'title': 'FastAPI REST Project',
-        'description': 'Built a production-style REST API using FastAPI with modular and scalable architecture and also implemented JWT-based authentication, OAuth2 flow, and secure token validation mechanisms.',
-        'tags': ['Python', 'FastAPI', 'SQLAlchemy', 'JWT', 'OAuth2', 'ORM', 'CI/CD', 'PostgreSQL'],
+        'title': 'FastAPI REST',
+        'description': 'Built a production-style REST API using FastAPI with modular architecture and also implemented JWT-based authentication, and OAuth2 flow.',
+        'tags': ['Python', 'FastAPI', 'SQLAlchemy', 'JWT'],
         'image': 'assets/images/fastapi_dashboard.jpeg',
         'link' : 'https://github.com/Devsonar19/Learning-REST-API'
       },
@@ -33,11 +35,18 @@ class ProjectGallery extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Selected Works",
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary, // Vibrant Red
+            border: Border.all(color: Colors.black, width: 3),
+          ),
+          child: Text(
+            "SELECTED_WORKS",
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.w900,
+              color: Colors.white,
+            ),
           ),
         ),
         const SizedBox(height: 32),
@@ -50,9 +59,9 @@ class ProjectGallery extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: crossAxisCount,
-                crossAxisSpacing: 24,
-                mainAxisSpacing: 24,
-                childAspectRatio: 0.85,
+                crossAxisSpacing: 32, // Slightly increased for the harsh shadows
+                mainAxisSpacing: 32,
+                childAspectRatio: 0.80, // Adjusted slightly to fit the new borders
               ),
               itemCount: projects.length,
               itemBuilder: (context, index) {

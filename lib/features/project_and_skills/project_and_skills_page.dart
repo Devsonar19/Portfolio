@@ -15,10 +15,8 @@ class ProjectsSkillsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Skills Section at the top
               SkillBox(),
               SizedBox(height: 80),
-              // Projects Section below
               ProjectGallery(),
             ],
           ),

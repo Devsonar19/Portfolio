@@ -8,26 +8,38 @@ class SkillBox extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          "Skills",
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            fontWeight: FontWeight.bold,
+        // Brutalist Section Title
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.tertiary, // Cyber Yellow
+            border: Border.all(color: Colors.black, width: 3),
+          ),
+          child: Text(
+            "TECHNICAL_SKILLS",
+            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+              fontWeight: FontWeight.w900,
+              color: Colors.black,
+            ),
           ),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 16),
         Text(
-          "A categorized overview of my technical proficiencies, emphasizing cross-platform development and backend architectures.",
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.grey[600]),
+          "> A categorized overview of my technical proficiencies, emphasizing cross-platform development and backend architectures.",
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+            color: Colors.black87,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         const SizedBox(height: 32),
         Wrap(
           spacing: 24,
           runSpacing: 24,
           children: [
-            _buildSkillCategory(context, "Frontend & Mobile", ["Flutter", "Dart", "Kotlin" ,"BLoC State Management", "UI/UX"]),
-            _buildSkillCategory(context, "Backend & Core", ["Python", "FastAPI", "Django" ,"C++", "Java", "PostgreSQL", "Firebase Firestore" ,"Data Structures", "Algorithms"]),
-            _buildSkillCategory(context, "Tools & Environments", ["Linux", "Git/GitHub", "GraphQL", "REST APIs", "Android Studio"]),
-            _buildSkillCategory(context, "Focus Areas", ["Machine Learning", "Deep Learning", "System Design", "Docker"]),
+            _buildSkillCategory(context, "FRONTEND & MOBILE", ["Flutter", "Dart", "Kotlin", "BLoC", "UI/UX"]),
+            _buildSkillCategory(context, "BACKEND & CORE", ["Python", "FastAPI", "Django", "C++", "Java", "PostgreSQL", "Firestore", "DSA"]),
+            _buildSkillCategory(context, "TOOLS & ENV", ["Linux", "Git/GitHub", "GraphQL", "REST APIs", "Android Studio"]),
+            _buildSkillCategory(context, "FOCUS AREAS", ["Machine Learning", "Deep Learning", "System Design", "Docker"]),
           ],
         ),
       ],
@@ -39,23 +51,30 @@ class SkillBox extends StatelessWidget {
       width: 270,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(15),
-        border: Border.all(color: Colors.grey.withOpacity(0.2)),
+        color: Colors.white,
+        border: Border.all(color: Colors.black, width: 3),
+        boxShadow: const [
+          BoxShadow(color: Colors.black, offset: Offset(6, 6), blurRadius: 0),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            title,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-              fontWeight: FontWeight.bold,
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            color: Colors.black,
+            child: Text(
+              title,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w900,
+                color: Colors.white,
+              ),
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 20),
           Wrap(
             spacing: 8,
-            runSpacing: 8,
+            runSpacing: 12,
             children: skills.map((skill) => _buildSkillChip(context, skill)).toList(),
           ),
         ],
@@ -67,13 +86,18 @@ class SkillBox extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surfaceContainerHighest.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.grey.withOpacity(0.3)),
+          color: Theme.of(context).colorScheme.secondary, // Neon Green Badges
+          border: Border.all(color: Colors.black, width: 2),
+          boxShadow: const [
+            BoxShadow(color: Colors.black, offset: Offset(2, 2), blurRadius: 0),
+          ]
       ),
       child: Text(
         label,
-        style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Colors.white70),
+        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+          color: Colors.black,
+          fontWeight: FontWeight.w900,
+        ),
       ),
     );
   }
