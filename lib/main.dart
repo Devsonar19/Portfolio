@@ -18,9 +18,18 @@ class MyPortfolioApp extends StatelessWidget {
       title: "Dev Sonar",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Arial',
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: const Color(0xFF121212),
+        brightness: Brightness.light,
+        // A retro beige/off-white background
+        scaffoldBackgroundColor: const Color(0xFFF4F0EA),
+        // Monospace font for the retro-futurism coding aesthetic
+        fontFamily: 'Courier',
+        colorScheme: const ColorScheme.light(
+          primary: Color(0xFFFF5252), // Vibrant Red/Pink
+          secondary: Color(0xFF00E676), // Neon Green
+          tertiary: Color(0xFFFFD600), // Cyber Yellow
+          surface: Colors.white,
+          onSurface: Colors.black,
+        ),
       ),
       home: const PortfolioScreen(),
     );
@@ -37,8 +46,10 @@ class PortfolioScreen extends StatefulWidget {
 class _PortfolioScreenState extends State<PortfolioScreen> {
   int _currIndex = 0;
 
-  final List<Widget> _pages = [
-    const HomePage(),
+  List<Widget> get _pages => [
+    HomePage(onNavigateToContact: () {
+      _onItemTapped(3);
+    },),
     const AboutPage(),
     const ProjectsSkillsPage(),
     const ContactPage(),
@@ -58,33 +69,41 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     final isDesktop = MediaQuery.of(context).size.width >= 800;
 
     return Scaffold(
+      extendBodyBehindAppBar: false,
+
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(80),
+        preferredSize: const Size.fromHeight(90),
         child: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.black.withOpacity(0.8),
-                Colors.transparent,
-              ],
-            ),
+          decoration: const BoxDecoration(
+            color: Color(0xFFF4F0EA),
+            // Thick bottom border
+            border: Border(bottom: BorderSide(color: Colors.black, width: 4)),
           ),
           child: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
             titleSpacing: 24,
-            title: Text(
-              "Portfolio",
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 22, letterSpacing: 1.2),
+            title: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.tertiary,
+                border: Border.all(color: Colors.black, width: 3),
+              ),
+              child: const Text(
+                "DEV.SONAR",
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  color: Colors.black,
+                  fontSize: 24,
+                  letterSpacing: 2,
+                ),
+              ),
             ),
-
             actions: isDesktop
                 ? [
               _buildDesktopNavLinks(),
               const SizedBox(width: 24),
-              _buildResumeButton(),
+              _buildResumeButton(context),
               const SizedBox(width: 24),
             ]
                 : [],
@@ -92,20 +111,14 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         ),
       ),
 
-      endDrawer: isDesktop ? null : _buildMobileDrawer(),
+      endDrawer: isDesktop ? null : _buildMobileDrawer(context),
 
       body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 200),
         transitionBuilder: (Widget child, Animation<double> animation) {
-          return FadeTransition(
-            opacity: animation,
-            child: SlideTransition(
-              position: Tween<Offset>(
-                begin: const Offset(0.0, 0.05),
-                end: Offset.zero,
-              ).animate(animation),
-              child: child,
-            ),
+          return ScaleTransition(
+            scale: animation,
+            child: child,
           );
         },
         child: Container(
@@ -120,75 +133,85 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _NavBarItem(title: "Home", isActive: _currIndex == 0, onTap: () => _onItemTapped(0)),
-        _NavBarItem(title: "About", isActive: _currIndex == 1, onTap: () => _onItemTapped(1)),
-        _NavBarItem(title: "Skills & Projects", isActive: _currIndex == 2, onTap: () => _onItemTapped(2)),
-        _NavBarItem(title: "Contact", isActive: _currIndex == 3, onTap: () => _onItemTapped(3)),
+        _NavBarItem(title: "HOME", isActive: _currIndex == 0, onTap: () => _onItemTapped(0)),
+        _NavBarItem(title: "ABOUT", isActive: _currIndex == 1, onTap: () => _onItemTapped(1)),
+        _NavBarItem(title: "WORKS", isActive: _currIndex == 2, onTap: () => _onItemTapped(2)),
+        _NavBarItem(title: "PING_ME", isActive: _currIndex == 3, onTap: () => _onItemTapped(3)),
       ],
     );
   }
 
-  Widget _buildResumeButton() {
-    return ElevatedButton(
-      onPressed: () {
+  Widget _buildResumeButton(BuildContext context) {
+    return InkWell(
+      onTap: () async {
         final pdfUrl = Uri.parse('https://drive.google.com/drive/folders/1s2IVWDwtwE3-gpZI2NR_avHMdv1uNA3Y');
-        launchUrl(pdfUrl);
+        if (await canLaunchUrl(pdfUrl)) {
+          await launchUrl(pdfUrl, mode: LaunchMode.externalApplication);
+        }
       },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary,
+          border: Border.all(color: Colors.black, width: 3),
+          // Harsh, unblurred shadow
+          boxShadow: const [
+            BoxShadow(color: Colors.black, offset: Offset(4, 4), blurRadius: 0),
+          ],
+        ),
+        child: const Text(
+          'RESUME.EXE',
+          style: TextStyle(fontWeight: FontWeight.w900, color: Colors.white, fontSize: 16),
+        ),
       ),
-      child: const Text('Resume', style: TextStyle(fontWeight: FontWeight.bold)),
     );
   }
 
-  Widget _buildMobileDrawer() {
+  Widget _buildMobileDrawer(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color(0xFF1E1E1E),
-      child: ListView(
-        padding: const EdgeInsets.all(24),
-        children: [
-          const SizedBox(height: 40),
-          const Text("Menu", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
-          const SizedBox(height: 24),
-          ListTile(
-              title: const Text("Home"),
-              onTap: () {
-                Navigator.pop(context);
-                _onItemTapped(0);
-              },
-              selected: _currIndex == 0
-          ),
-          ListTile(
-              title: const Text("About"),
-              onTap: () {
-                Navigator.pop(context);
-                _onItemTapped(1);
-              },
-              selected: _currIndex == 1
-          ),
-          ListTile(
-              title: const Text("Skills & Projects"),
-              onTap: (){
-                Navigator.pop(context);
-                _onItemTapped(2);
-              },
-              selected: _currIndex == 2
-          ),
-          ListTile(
-              title: const Text("Contact"),
-              onTap: () {
-                Navigator.pop(context);
-                _onItemTapped(3);
-              },
-              selected: _currIndex == 3
-          ),
-          const SizedBox(height: 24),
-          _buildResumeButton(),
-        ],
+      backgroundColor: Theme.of(context).colorScheme.tertiary,
+      child: Container(
+        decoration: const BoxDecoration(
+          border: Border(left: BorderSide(color: Colors.black, width: 4)),
+        ),
+        child: ListView(
+          padding: const EdgeInsets.all(24),
+          children: [
+            const SizedBox(height: 40),
+            const Text(
+              "SYSTEM.MENU",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.w900, color: Colors.black),
+            ),
+            const SizedBox(height: 24),
+            _buildDrawerTile("HOME", 0),
+            _buildDrawerTile("ABOUT", 1),
+            _buildDrawerTile("WORKS", 2),
+            _buildDrawerTile("PING_ME", 3),
+            const SizedBox(height: 48),
+            _buildResumeButton(context),
+          ],
+        ),
       ),
+    );
+  }
+
+  Widget _buildDrawerTile(String title, int index) {
+    final isActive = _currIndex == index;
+    return ListTile(
+      contentPadding: EdgeInsets.zero,
+      title: Text(
+        "> $title",
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w900,
+          color: isActive ? Colors.white : Colors.black,
+          backgroundColor: isActive ? Colors.black : Colors.transparent,
+        ),
+      ),
+      onTap: () {
+        Navigator.pop(context);
+        _onItemTapped(index);
+      },
     );
   }
 }
@@ -210,29 +233,30 @@ class _NavBarItemState extends State<_NavBarItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         onEnter: (_) => setState(() => isHovered = true),
         onExit: (_) => setState(() => isHovered = false),
         child: GestureDetector(
           onTap: widget.onTap,
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: widget.isActive || isHovered ? Colors.blueAccent : Colors.transparent,
-                  width: 2.0,
-                ),
+              color: widget.isActive ? Colors.black : (isHovered ? Colors.white : Colors.transparent),
+              border: Border.all(
+                color: widget.isActive || isHovered ? Colors.black : Colors.transparent,
+                width: 3,
               ),
+              boxShadow: isHovered && !widget.isActive
+                  ? const [BoxShadow(color: Colors.black, offset: Offset(3, 3), blurRadius: 0)]
+                  : null,
             ),
             child: Text(
               widget.title,
               style: TextStyle(
-                color: widget.isActive || isHovered ? Colors.white : Colors.grey[400],
-                fontWeight: widget.isActive ? FontWeight.bold : FontWeight.normal,
+                color: widget.isActive ? Colors.white : Colors.black,
+                fontWeight: FontWeight.w900,
                 fontSize: 16,
               ),
             ),
