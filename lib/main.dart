@@ -78,6 +78,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
             border: Border(bottom: BorderSide(color: Colors.black, width: 4)),
           ),
           child: AppBar(
+            toolbarHeight: 86,
             backgroundColor: Colors.transparent,
             elevation: 0,
             titleSpacing: 24,
@@ -130,6 +131,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   Widget _buildDesktopNavLinks() {
     return Row(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         _NavBarItem(title: "HOME", isActive: _currIndex == 0, onTap: () => _onItemTapped(0)),
         _NavBarItem(title: "ABOUT", isActive: _currIndex == 1, onTap: () => _onItemTapped(1)),
