@@ -66,6 +66,8 @@ flutter:
     - assets/images/fastapi_dashboard.jpeg
     - assets/pdfs/resume.pdf
     - assets/images/screenshot_readme.png
+    - assets/images/tasker_dashboard.png
+    - assets/images/poster black .png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 

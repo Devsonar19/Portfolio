@@ -30,6 +30,20 @@ class ProjectGallery extends StatelessWidget {
         'image': 'assets/images/fastapi_dashboard.jpeg',
         'link' : 'https://github.com/Devsonar19/Learning-REST-API'
       },
+      {
+        'title': 'Tasker',
+        'description': 'A modern cross-platform Task Manager application built with Flutter and Firebase.Tasker is equipped with authentication and motivational quotes integration.',
+        'tags': ['Flutter', 'Firebase', 'Cloud Firestore', 'REST API', 'HTTP'],
+        'image': 'assets/images/tasker_dashboard.png',
+        'link' : 'https://github.com/Devsonar19/Tasker--Manage-your-Tasks'
+      },
+      {
+        'title': 'Saypiens',
+        'description': 'A modern Community website built on Flutter, Saypiens is community build for and by GenZ. It support animation and user form registration with cloud Firestore support.',
+        'tags': ['Flutter', 'Firebase', 'Cloud Firestore'],
+        'image': 'assets/images/poster black .png',
+        'link' : 'https://saypiens.life/'
+      }
     ];
 
     return Column(
